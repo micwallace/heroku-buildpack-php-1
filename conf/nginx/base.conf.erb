@@ -61,6 +61,11 @@ http {
       text/x-component;
     # text/html is always compressed by HttpGzipModule
 
+    map $http_upgrade $connection_upgrade {
+            default upgrade;
+            ''      close;
+    }
+
     server {
         server_name localhost;
         listen <%= ENV['PORT'] %>;
